@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lời chúc 20/11 ❤️</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    min-height:100vh;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:linear-gradient(135deg,#ffd9e8 0%,#e4e9ff 50%,#d9f2ff 100%);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;overflow-x:hidden;position:relative;
+    color:#4a3550;
+  }
+
+  /* ---------- Trái tim bay nền ---------- */
+  .bg-hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
+  .bg-hearts span{
+    position:absolute;bottom:-60px;font-size:22px;opacity:.55;
+    animation:floatUp linear infinite;
+  }
+  @keyframes floatUp{
+    to{transform:translateY(-115vh) rotate(360deg);opacity:0;}
+  }
+
+  /* ---------- Khung màn hình ---------- */
+  .screen{display:none;position:relative;z-index:1;width:100%;max-width:850px;}
+  .screen.active{display:block;animation:fadeIn .55s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+
+  .card{
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(14px);
+    border:1px solid #fff;
+    border-radius:28px;
+    padding:38px 28px;
+    box-shadow:0 22px 55px rgba(180,120,160,.28);
+    text-align:center;
+  }
+
+  h1{
+    font-size:clamp(1.4rem,4vw,2rem);
+    background:linear-gradient(90deg,#ff5f9e,#a06bff,#3fb6ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:8px;
+  }
+  .subtitle{color:#8b7a92;font-size:.95rem;margin-bottom:26px;}
+
+  /* ---------- Form ---------- */
+  .field{text-align:left;margin-bottom:18px;}
+  .field label{
+    display:block;font-size:.88rem;font-weight:600;
+    margin-bottom:7px;color:#6d5a75;
+  }
+  .field input{
+    width:100%;padding:14px 16px;font-size:1rem;font-family:inherit;
+    border:2px solid #f3d7e6;border-radius:16px;outline:none;
+    background:#fff;color:#4a3550;transition:.25s;
+  }
+  .field input::placeholder{color:#c3b3c9;}
+  .field input:focus{
+    border-color:#ff8db9;
+    box-shadow:0 0 0 4px rgba(255,141,185,.18);
+  }
+
+  /* ---------- Chọn Thầy / Cô ---------- */
+  .role-group{
+    display:flex;gap:12px;margin-top:4px;
+  }
+  .role-option{
+    flex:1;position:relative;cursor:pointer;
+  }
+  .role-option input{position:absolute;opacity:0;pointer-events:none;}
+  .role-box{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:14px 10px;border-radius:18px;
+    border:2px solid #f3d7e6;background:#fff;
+    transition:.25s;user-select:none;
+  }
+  .role-box .icon{font-size:1.7rem;transition:.25s;}
+  .role-box .label{font-size:.92rem;font-weight:600;color:#6d5a75;}
+  .role-option:hover .role-box{border-color:#ffb8d4;transform:translateY(-2px);}
+  .role-option input:checked + .role-box{
+    border-color:#ff6fa5;
+    background:linear-gradient(135deg,#ffeaf3,#f0e8ff);
+    box-shadow:0 8px 22px rgba(255,111,165,.28);
+    transform:translateY(-2px);
+  }
+  .role-option input:checked + .role-box .icon{
+    transform:scale(1.25) rotate(-6deg);
+  }
+  .role-option input:checked + .role-box .label{color:#ff4d94;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px 34px;font-size:1.02rem;font-weight:700;font-family:inherit;
+    color:#fff;border:none;border-radius:50px;cursor:pointer;
+    background:linear-gradient(135deg,#ff6fa5,#a06bff);
+    box-shadow:0 10px 24px rgba(255,111,165,.4);
+    transition:.25s;margin-top:8px;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(255,111,165,.55);}
+  .btn:active{transform:translateY(0) scale(.97);}
+  .btn.ghost{
+    background:#fff;color:#a06bff;
+    box-shadow:0 8px 20px rgba(160,107,255,.2);
+    border:2px solid #e6d8ff;
+  }
+
+  .hint{font-size:.8rem;color:#a294a8;margin-top:14px;}
+
+  /* ---------- Loading dễ thương ---------- */
+  .loading-box{text-align:center;padding:20px 10px;}
+  .loader-ring{
+    width:96px;height:96px;margin:0 auto 24px;
+    border-radius:50%;
+    border:9px solid #ffe0ee;
+    border-top-color:#ff6fa5;
+    border-right-color:#a06bff;
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .bounce-hearts{display:flex;justify-content:center;gap:10px;font-size:26px;margin-bottom:16px;}
+  .bounce-hearts span{animation:bounce 1.2s ease-in-out infinite;}
+  .bounce-hearts span:nth-child(2){animation-delay:.15s;}
+  .bounce-hearts span:nth-child(3){animation-delay:.3s;}
+  .bounce-hearts span:nth-child(4){animation-delay:.45s;}
+  .bounce-hearts span:nth-child(5){animation-delay:.6s;}
+  @keyframes bounce{
+    0%,100%{transform:translateY(0) scale(1);}
+    40%{transform:translateY(-16px) scale(1.2);}
+  }
+
+  .loading-text{font-weight:700;color:#ff5f9e;font-size:1.05rem;letter-spacing:.5px;}
+  .loading-dots::after{content:'';animation:dots 1.4s steps(4,end) infinite;}
+  @keyframes dots{0%{content:'';}25%{content:'.';}50%{content:'..';}75%{content:'...';}}
+
+  /* ---------- Thiệp chúc ---------- */
+  .greeting-name{
+    font-size:clamp(1.3rem,4.5vw,1.9rem);
+    font-weight:800;color:#ff4d94;margin:6px 0 18px;
+    text-shadow:0 3px 10px rgba(255,77,148,.25);
+  }
+  .message{
+    font-size:1rem;line-height:1.85;color:#6d5a75;
+    max-width:640px;margin:0 auto;white-space:pre-line;
+  }
+  .divider{
+    width:90px;height:4px;border-radius:4px;margin:22px auto;
+    background:linear-gradient(90deg,#ff6fa5,#a06bff);
+  }
+
+  /* ---------- 6 tấm hình bo góc ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin:28px 0 26px;
+  }
+  .gallery figure{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:22px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffe0ec,#e0e9ff);
+    box-shadow:0 10px 22px rgba(150,110,160,.22);
+    border:4px solid #fff;
+    transition:.35s;
+  }
+  .gallery figure:hover{
+    transform:translateY(-6px) rotate(-1.5deg);
+    box-shadow:0 18px 34px rgba(150,110,160,.35);
+  }
+  .gallery img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .45s ease;
+  }
+  .gallery figure:hover img{transform:scale(1.1);}
+  .gallery figure.noimg::after{
+    content:'🌻';position:absolute;inset:0;
+    display:grid;place-items:center;font-size:2.6rem;
+  }
+
+  /* ---------- Modal thông báo ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:99;
+    background:rgba(60,30,60,.35);
+    backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;opacity:0;visibility:hidden;transition:.28s;
+  }
+  .modal-overlay.show{opacity:1;visibility:visible;}
+  .modal{
+    background:#fff;border-radius:24px;padding:30px 26px;
+    max-width:340px;width:100%;text-align:center;
+    box-shadow:0 24px 60px rgba(80,30,80,.35);
+    transform:scale(.85);transition:.28s;
+  }
+  .modal-overlay.show .modal{transform:scale(1);}
+  .modal-icon{font-size:2.6rem;margin-bottom:12px;animation:pop .5s ease;}
+  @keyframes pop{0%{transform:scale(0);}70%{transform:scale(1.2);}100%{transform:scale(1);}}
+  .modal-text{font-size:1rem;font-weight:600;color:#5c4a63;line-height:1.6;margin-bottom:20px;}
+
+  /* ---------- Tim rơi khi mở thiệp ---------- */
+  .confetti{
+    position:fixed;top:-40px;font-size:20px;z-index:98;
+    pointer-events:none;animation:fall linear forwards;
+  }
+  @keyframes fall{
+    to{transform:translateY(110vh) rotate(540deg);opacity:0;}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:640px){
+    .card{padding:30px 18px;border-radius:22px;}
+    .gallery{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .gallery figure{border-radius:18px;}
+    .role-box{padding:12px 6px;}
+    .role-box .icon{font-size:1.5rem;}
+    .role-box .label{font-size:.85rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Trái tim bay nền -->
+<div class="bg-hearts" id="bgHearts"></div>
+
+<!-- ============ MÀN 1: NHẬP THÔNG TIN ============ -->
+<section class="screen active" id="screenForm">
+  <div class="card">
+    <h1>🌸 Gửi Lời Chúc 20/11 🌸</h1>
+    <p class="subtitle">Nhập thông tin để mở tấm thiệp dành tặng thầy cô nhé!</p>
+
+    <div class="field">
+      <label for="inputName">👤 Tên của bạn</label>
+      <input type="text" id="inputName" placeholder="Ví dụ: Nguyễn Văn A" autocomplete="off">
+    </div>
+
+    <!-- Chọn Thầy hoặc Cô -->
+    <div class="field">
+      <label>🎓 Bạn muốn gửi lời chúc đến</label>
+      <div class="role-group">
+        <label class="role-option">
+          <input type="radio" name="role" id="roleThay" value="thay">
+          <span class="role-box">
+            <span class="icon">👨‍🏫</span>
+            <span class="label">Thầy</span>
+          </span>
+        </label>
+        <label class="role-option">
+          <input type="radio" name="role" id="roleCo" value="co">
+          <span class="role-box">
+            <span class="icon">👩‍🏫</span>
+            <span class="label">Cô</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="inputPass">🔒 Mật khẩu</label>
+      <input type="password" id="inputPass" placeholder="Nhập mật khẩu..." autocomplete="off">
+    </div>
+
+    <button class="btn" id="btnSubmit">💌 Mở thiệp ngay</button>
+    <p class="hint">Gợi ý mật khẩu: <b>Tên người gửi + yêu sếp Mai (ghi không dấu)</b></p>
+  </div>
+</section>
+
+<!-- ============ MÀN 2: LOADING ============ -->
+<section class="screen" id="screenLoading">
+  <div class="card">
+    <div class="loading-box">
+      <div class="loader-ring"></div>
+      <div class="bounce-hearts">
+        <span>💖</span><span>🌸</span><span>💝</span><span>🌷</span><span>💗</span>
+      </div>
+      <p class="loading-text">Đang chuẩn bị lời chúc<span class="loading-dots"></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÀN 3: THIỆP CHÚC ============ -->
+<section class="screen" id="screenGreeting">
+  <div class="card">
+    <h1 id="greetTitle">🎉 Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11 🎉</h1>
+    <p class="greeting-name" id="greetName"></p>
+    <div class="divider"></div>
+
+    <p class="message" id="greetMessage"></p>
+
+    <!-- 6 tấm hình bo góc -->
+    <div class="gallery">
+      <figure><img src="hinh1.jpg" alt="Kỷ niệm 1" onerror="this.parentNode.classList.add('noimg');this.remove();"></figure>
+      <figure><img src="hinh2.jpg" alt="Kỷ niệm 2" onerror="this.parentNode.classList.add('noimg');this.remove();"></figure>
+      <figure><img src="hinh3.jpg" alt="Kỷ niệm 3" onerror="this.parentNode.classList.add('noimg');this.remove();"></figure>
+      <figure><img src="hinh4.jpg" alt="Kỷ niệm 4" onerror="this.parentNode.classList.add('noimg');this.remove();"></figure>
+      <figure><img src="hinh5.jpg" alt="Kỷ niệm 5" onerror="this.parentNode.classList.add('noimg');this.remove();"></figure>
+      <figure><img src="hinh6.jpg" alt="Kỷ niệm 6" onerror="this.parentNode.classList.add('noimg');this.remove();"></figure>
+    </div>
+
+    <button class="btn ghost" id="btnAgain">🔄 Gửi lời chúc khác</button>
+  </div>
+</section>
+
+<!-- ============ MODAL THÔNG BÁO ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-icon" id="modalIcon">⚠️</div>
+    <div class="modal-text" id="modalText">Vui lòng nhập tên!</div>
+    <button class="btn" id="modalBtn" style="padding:12px 28px;font-size:.95rem;">Đã hiểu</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   1. TRÁI TIM BAY NỀN
+   ========================================================= */
+(function createBgHearts(){
+  const wrap = document.getElementById('bgHearts');
+  const icons = ['💖','🌸','💗','🌷','✨','💝','🎀'];
+  for (let i = 0; i < 18; i++){
+    const s = document.createElement('span');
+    s.textContent = icons[Math.floor(Math.random() * icons.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = (16 + Math.random() * 20) + 'px';
+    s.style.animationDuration = (9 + Math.random() * 10) + 's';
+    s.style.animationDelay = (Math.random() * 10) + 's';
+    wrap.appendChild(s);
+  }
+})();
+
+/* =========================================================
+   2. CÁC PHẦN TỬ
+   ========================================================= */
+const screenForm     = document.getElementById('screenForm');
+const screenLoading  = document.getElementById('screenLoading');
+const screenGreeting = document.getElementById('screenGreeting');
+
+const inputName  = document.getElementById('inputName');
+const inputPass  = document.getElementById('inputPass');
+const btnSubmit  = document.getElementById('btnSubmit');
+const btnAgain   = document.getElementById('btnAgain');
+
+const roleThay = document.getElementById('roleThay');
+const roleCo   = document.getElementById('roleCo');
+
+const greetTitle   = document.getElementById('greetTitle');
+const greetName    = document.getElementById('greetName');
+const greetMessage = document.getElementById('greetMessage');
+
+const modalOverlay = document.getElementById('modalOverlay');
+const modalText    = document.getElementById('modalText');
+const modalIcon    = document.getElementById('modalIcon');
+const modalBtn     = document.getElementById('modalBtn');
+
+const PASSWORD = 'EmyeusepMai';   // 🔑 Đổi mật khẩu tại đây
+
+/* =========================================================
+   3. HIỆN / ẨN MÀN HÌNH
+   ========================================================= */
+function showScreen(target){
+  [screenForm, screenLoading, screenGreeting].forEach(s => s.classList.remove('active'));
+  target.classList.add('active');
+}
+
+/* =========================================================
+   4. MODAL THÔNG BÁO
+   ========================================================= */
+let modalTimer = null;
+function showModal(message, icon = '⚠️'){
+  modalText.textContent = message;
+  modalIcon.textContent = icon;
+  modalOverlay.classList.add('show');
+  clearTimeout(modalTimer);
+  modalTimer = setTimeout(closeModal, 2600);
+}
+function closeModal(){
+  modalOverlay.classList.remove('show');
+}
+modalBtn.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => {
+  if (e.target === modalOverlay) closeModal();
+});
+
+/* =========================================================
+   5. XỬ LÝ GỬI FORM
+   ========================================================= */
+function handleSubmit(){
+  const name = inputName.value.trim();
+  const pass = inputPass.value.trim();
+  const role = document.querySelector('input[name="role"]:checked');
+
+  // --- Kiểm tra tên rỗng ---
+  if (name === ''){
+    showModal('Vui lòng nhập tên!', '✏️');
+    inputName.focus();
+    return;
+  }
+
+  // --- Kiểm tra đã chọn Thầy hoặc Cô chưa ---
+  if (!role){
+    showModal('Vui lòng chọn Thầy hoặc Cô!', '🎓');
+    return;
+  }
+
+  // --- Kiểm tra mật khẩu rỗng ---
+  if (pass === ''){
+    showModal('Vui lòng nhập mật khẩu!', '🔒');
+    inputPass.focus();
+    return;
+  }
+
+  // --- Kiểm tra mật khẩu đúng ---
+  if (pass !== PASSWORD){
+    showModal('Mật khẩu không đúng. Gợi ý: 123456', '❌');
+    inputPass.focus();
+    inputPass.select();
+    return;
+  }
+
+  startLoading(name, role.value);
+}
+
+btnSubmit.addEventListener('click', handleSubmit);
+
+// Nhấn Enter để gửi
+[inputName, inputPass].forEach(inp => {
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSubmit();
+  });
+});
+
+/* =========================================================
+   6. LOADING -> THIỆP CHÚC
+   ========================================================= */
+function startLoading(name, role){
+  showScreen(screenLoading);
+
+  setTimeout(() => {
+    renderGreeting(name, role);
+    showScreen(screenGreeting);
+    rainHearts();
+  }, 2800);   // ⏱ thời gian loading (ms)
+}
+
+/* =========================================================
+   7. HIỂN THỊ NỘI DUNG THIỆP THEO THẦY / CÔ
+   ========================================================= */
+function renderGreeting(name, role){
+  let title, greeting, message;
+
+  if (role === 'thay'){
+    title = '🎉 Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11 🎉';
+    greeting = 'Kính gửi lời chúc đến ' + ' đến Thầy 💙' + name ;
+    message =
+`Mùa 20/11 năm nay mang một ý nghĩa thật khác, bởi chỉ vài tháng nữa thôi, chuyến đò cuối cấp của chúng em sẽ cập bến và mỗi đứa sẽ bước đi trên một hành trình riêng. Cảm ơn Thầy đã luôn là điểm tựa vững chắc, bao dung cho những phút bồng bột tuổi 18 và tận tụy dìu dắt chúng em từng chút một. Dù mai này đi đâu, làm gì, chúng em vẫn luôn tự hào vì đã từng là học trò của Thầy. Chúc Thầy thật nhiều sức khỏe, bình an và hạnh phúc!`;
+  } else {
+    title = '🎉 Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11 🎉';
+    greeting = 'Kính gửi lời chúc đến ' + ' đến Cô 💖' + name ;
+    message =
+`Mùa 20/11 năm nay mang một ý nghĩa thật khác, bởi chỉ vài tháng nữa thôi, chuyến đò cuối cấp của chúng em sẽ cập bến và mỗi đứa sẽ bước đi trên một hành trình riêng. Cảm ơn Cô đã luôn là điểm tựa vững chắc, bao dung cho những phút bồng bột tuổi 18 và tận tụy dìu dắt chúng em từng chút một. Dù mai này đi đâu, làm gì, chúng em vẫn luôn tự hào vì đã từng là học trò của Cô. Chúc Cô thật nhiều sức khỏe, bình an và hạnh phúc!`;
+  }
+
+  greetTitle.textContent   = title;
+  greetName.textContent    = greeting;
+  greetMessage.textContent = message;
+}
+
+/* =========================================================
+   8. TIM RƠI KHI MỞ THIỆP
+   ========================================================= */
+function rainHearts(){
+  const icons = ['💖','🌸','💝','🌷','✨','🎊','💐'];
+  for (let i = 0; i < 32; i++){
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    el.textContent = icons[Math.floor(Math.random() * icons.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.fontSize = (16 + Math.random() * 18) + 'px';
+    el.style.animationDuration = (3 + Math.random() * 3) + 's';
+    el.style.animationDelay = (Math.random() * 1.5) + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+  }
+}
+
+/* =========================================================
+   9. GỬI LỜI CHÚC KHÁC
+   ========================================================= */
+btnAgain.addEventListener('click', () => {
+  inputName.value = '';
+  inputPass.value = '';
+  roleThay.checked = false;
+  roleCo.checked   = false;
+  showScreen(screenForm);
+  inputName.focus();
+});
+</script>
+</body>
+</html>
